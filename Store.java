@@ -1,10 +1,5 @@
 
-/**
- * Write a description of class Store here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+
 public class Store
 {
     // instance variables - replace the example below with your own
@@ -12,7 +7,7 @@ public class Store
     private Product Product2;
     private Product Product3;
 
-    /**
+    /** 
      * Constructor for objects of class Store
      */
     public Store()
@@ -22,12 +17,16 @@ public class Store
         Product2 = new Product();
         Product3 = new Product();
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
+    public void setProduct(String prodName, int demand,setup,unit,
+        inventory, selling )
+    {
+        setName(prodName);
+        setDemand(demand);
+        setSetup(setup);
+        unitCost(unit);
+        setInventory(inventory);
+        setSellingPrice(selling);
+    
+    }
     
 }
