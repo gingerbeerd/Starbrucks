@@ -6,7 +6,7 @@ public class StarbrucksInterface
     {
        Scanner console = new Scanner(System.in);
        Store s = new Store();
-       int      demand,menu =0, menu2 = 0;
+       int      demand = 0,demandck = 0, setupck, unitck, inventoryck, sellingck, menu =0, menu2 = 0;
        String   name;
        double setup, unit, inventory, selling;
     
@@ -33,8 +33,12 @@ public class StarbrucksInterface
                  System.out.println("Enter Product");
                  System.out.print("Product Name");
                  name = console.next();
-                 System.out.print("Demand");
-                 demand = console.nextInt();
+                 while (demandck==0){
+                     System.out.print("Demand");
+                     demand = console.nextInt();
+                     demandck = checkIntInput(demand);
+                     //System.out.println("Must be positive");
+                    }
                  System.out.print("Setup Cost");
                  setup = console.nextDouble();
                  System.out.print("Unit Cost");
@@ -60,4 +64,10 @@ public class StarbrucksInterface
        
        
     }
+    public static int checkIntInput(int checkInt)
+        {
+           if (checkInt <=0)
+           {return 0;} 
+           else { return 1;}
+        }
 }
