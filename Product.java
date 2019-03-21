@@ -5,6 +5,10 @@
  * Peter Mastello
  * @version 0.1
  */
+
+Java.util.*;
+Java.lang.Math.*;
+
 public class Product
 {
     // private variables for each product
@@ -14,10 +18,11 @@ public class Product
     private double unitCost;
     private double inventoryCost;
     private double sellingPrice;
+    private double Q;
 
 
     /**
-     * Constructor for objects of class Product
+     * Default Constructor for objects of class Product
      */
     public Product()
     {
@@ -28,8 +33,23 @@ public class Product
         unitCost = 0;
         inventoryCost = 0;
         sellingPrice = 0;
+        Q=0;
     }
-
+    /**
+     * Parameterized constructor for objects of class Product
+     */
+    public Product(String prodName,int demand,double setup,double unit,double inventory,double selling)
+    {
+        // initialise instance variables
+        name = prodName;
+        demandRate = demand;
+        setupCost = setup;
+        unitCost = unit;
+        inventoryCost = inventory;
+        sellingPrice = selling;
+        calcQ();
+    }
+    
     /**
      * Methods for assigning varible values
      */
@@ -48,7 +68,7 @@ public class Product
         setupCost = setup;
     }
     
-    public void unitCost(double unit)
+    public void unitCost(int unit)
     {
         unitCost = unit;
     }
@@ -58,7 +78,7 @@ public class Product
         inventoryCost = inventory;
     }
     
-    public void setSellingPrice(double selling)
+    public void setSellingPrice(int selling)
     {
         sellingPrice = selling;
     }
@@ -71,11 +91,11 @@ public class Product
     {
         return demandRate;
     }  
-    public double getSetup()
+    public int getSetup()
     {
         return setupCost;
     } 
-    public double getUnitCost()
+    public int getUnitCost()
     {
         return unitCost;
     } 
@@ -83,8 +103,21 @@ public class Product
     {
         return inventoryCost;
     } 
-    public double getSellingPrice()
+    public int getSellingPrice()
     {
         return sellingPrice;
     } 
+    
+    /** Calculates Q as per equation and rounds to integer.
+     * 
+     */
+    public void calcQ()
+    {
+        Q = Math.sqrt((2*setupCost*demandRate)/inventoryCost);
+        Q=Math.round(Q);
+    }
+    public double getQ()
+    {
+        return Q;
+    }
 }
