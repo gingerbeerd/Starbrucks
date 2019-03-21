@@ -7,7 +7,7 @@ public class Store
     private Product p2;
     private Product p3;
     private String name;
-    private int demandRate;
+    private int demandRate, prodNum;
     private double setupCost;
     private double unitCost;
     private double inventoryCost;
@@ -33,5 +33,17 @@ public class Store
         p1.setSellingPrice(selling);
     
     }
+    public String getProductName(int prodNum)
+    {//gets name of product
+        switch (prodNum)
+        {
+            case 1: return p1.getName();
+           
+            case 2: return p2.getName();
+            
+            case 3: return p3.getName();
+            default: return "";
+        }       
+     }
     
 }

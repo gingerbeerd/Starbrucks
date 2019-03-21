@@ -6,7 +6,7 @@ public class StarbrucksInterface
     {
        Scanner console = new Scanner(System.in);
        Store s = new Store();
-       int      demand,menu, menu2 = 0;
+       int      demand,menu =0, menu2 = 0;
        String   name;
        double setup, unit, inventory, selling;
     
@@ -22,37 +22,42 @@ public class StarbrucksInterface
            System.out.println("3. show the replenishment strategy for a product");
            System.out.println("4. exit program");
            menu = console.nextInt();
-           if (menu=1)
-            {while (menu2!=1){
-                System.out.println("Enter Product");
-                System.out.print("Product Name");
-                name = console.next();
-                System.out.print("Demand");
-                demand = console.next();
-                System.out.print("Setup Cost");
-                setup = console.next();
-                System.out.print("Unit Cost");
-                unit = console.next();
-                System.out.print("Inventory Cost");
-                inventory = console.next();
-                System.out.print("Selling Price");
-                selling = console.next();
-                
-                s.setProduct1(name, demand, setup, unit, inventory, selling);
-                
+           if (menu==1)
+            {System.out.println("Select a product to enter or overwrite (1-3):");
+             System.out.println("1. "+s.getProductName(1)); 
+             System.out.println("2. "+s.getProductName(2)); 
+             System.out.println("3. "+s.getProductName(3));
+            
+             menu2 = console.nextInt();   
+             while (menu2>0 && menu2<4){
+                 System.out.println("Enter Product");
+                 System.out.print("Product Name");
+                 name = console.next();
+                 System.out.print("Demand");
+                 demand = console.nextInt();
+                 System.out.print("Setup Cost");
+                 setup = console.nextDouble();
+                 System.out.print("Unit Cost");
+                 unit = console.nextDouble();
+                 System.out.print("Inventory Cost");
+                 inventory = console.nextDouble();
+                 System.out.print("Selling Price");
+                 selling = console.nextDouble();
+                 //add variables to product  
+                 switch(menu2){
+                     case 1: s.setProduct1(name, demand, setup, unit, inventory, selling);
+                     case 2: s.setProduct1(name, demand, setup, unit, inventory, selling);
+                     case 3: s.setProduct1(name, demand, setup, unit, inventory, selling);
                 //change for adding multiple products
-                menu=1;
-            }
+                
+                    }
+                  menu2=4;
+                }
             }
            
        }
        
-       if (store.productcount()=0)
-        {   
-            System.out.print("No Products to compare");
-            System.exit();
-        }
-        //else{
-          //  Store.getBestProfit()
+       
+       
     }
 }
