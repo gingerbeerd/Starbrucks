@@ -6,8 +6,8 @@
  * @version 0.1
  */
 
-Java.util.*;
-Java.lang.Math.*;
+import java.util.*;
+import java.lang.Math.*;
 
 public class Product
 {
@@ -68,7 +68,7 @@ public class Product
         setupCost = setup;
     }
     
-    public void unitCost(int unit)
+    public void unitCost(double unit)
     {
         unitCost = unit;
     }
@@ -78,7 +78,7 @@ public class Product
         inventoryCost = inventory;
     }
     
-    public void setSellingPrice(int selling)
+    public void setSellingPrice(double selling)
     {
         sellingPrice = selling;
     }
@@ -91,11 +91,11 @@ public class Product
     {
         return demandRate;
     }  
-    public int getSetup()
+    public double getSetup()
     {
         return setupCost;
     } 
-    public int getUnitCost()
+    public double getUnitCost()
     {
         return unitCost;
     } 
@@ -103,7 +103,7 @@ public class Product
     {
         return inventoryCost;
     } 
-    public int getSellingPrice()
+    public double getSellingPrice()
     {
         return sellingPrice;
     } 
