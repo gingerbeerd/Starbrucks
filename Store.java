@@ -6,12 +6,13 @@ public class Store
     private Product p1;
     private Product p2;
     private Product p3;
+    private Product Px;
     private String name;
     private int demandRate, prodNum;
-    private double setupCost;
-    private double unitCost;
-    private double inventoryCost;
-    private double sellingPrice;
+    private int setupCost;
+    private int unitCost;
+    private int inventoryCost;
+    private int sellingPrice;
 
     /** 
      * Constructor for objects of class Store
@@ -23,27 +24,67 @@ public class Store
         p2 = new Product();
         p3 = new Product();
     }
-    public void setProduct1(String prodName,int demand,double setup, double unit, double inventory, double selling) 
-    {
-        p1.setName(prodName);
-        p1.setDemand(demand);
-        p1.setSetup(setup);
-        p1.unitCost(unit);
-        p1.setInventory(inventory);
-        p1.setSellingPrice(selling);
+    public void setProduct(int prodNum, String prodName,int demand,int setup, int unit, int inventory, int selling) 
+    { Product prodVar;
+      prodVar = getProduct(prodNum);
+      
+      p1.setName(prodName);
+      p1.setDemand(demand);
+      p1.setSetup(setup);
+      p1.unitCost(unit);
+      p1.setInventory(inventory);
+      p1.setSellingPrice(selling);
     
     }
-    public String getProductName(int prodNum)
-    {//gets name of product
-        switch (prodNum)
-        {
-            case 1: return p1.getName();
-           
-            case 2: return p2.getName();
-            
-            case 3: return p3.getName();
-            default: return "";
-        }       
-     }
     
-}
+     public Product getProduct(int prodNum)
+     { Product Px; 
+         
+        switch (prodNum){
+        case 1 : Px=p1;
+        case 2 : Px=p2;
+        case 3 : Px=p3;
+        default: Px=p1;
+       }
+       return Px;
+    }
+     public String getProductName(int prodNum) 
+    {  Px = getProduct(prodNum); 
+       return Px.getName();
+    
+    }
+    
+    public void getProductStrategy  (int prod, int weeks){
+       int      q, demand, week =1, inventory = 0, order, orderCount, remainder, x;
+       q=p1.calcQ();
+       demand = p1.getDemand();
+       inventory=0;
+       week=1;
+       
+       //both ints, so will truncate
+       orderCount = (demand*weeks/q)+1; //5
+       remainder = orderCount*q - (weeks*demand); //5*
+       x=0;
+       
+       do {
+         if (demand>inventory){
+            order=q;
+            if (x==orderCount-1)
+                {order= order-remainder;}
+            
+            inventory=inventory+order;
+            x++;}
+            else
+            {order=0;}
+           
+            
+            inventory=inventory-demand;
+           
+           System.out.print("Week: "+week +" Quantity order: "+order+" Demand: "+demand+" Inventory: "+inventory);
+           System.out.println();
+           week++;
+           
+       }
+       while (weeks >= week);
+}}
+
