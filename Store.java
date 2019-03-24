@@ -58,6 +58,7 @@ public class Store
        int      q, demand, week =1, inventory = 0, order, orderCount, remainder, x;
        q=p1.calcQ();
        demand = p1.getDemand();
+       if (q<demand){q=demand;}
        inventory=0;
        week=1;
        
